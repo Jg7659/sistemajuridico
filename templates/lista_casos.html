@@ -1,0 +1,75 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Casos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/casos.css') }}">
+</head>
+<body>
+    <h1>Lista de Casos</h1>
+    <button class="buttons" type="button" id="btnRegistro_Caso">+</button>
+    <button class="buttons" type="button" id="btnRegistro_Area">Agregar Área Legal</button>
+    <button class="buttons" type="button" id="btnAreas">Areas Legales</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Fecha de creacion</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Area</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for caso in casos %}
+                <tr>
+                    <td>{{ caso['titulo'] }}</td>
+                    <td>{{ caso['descripcion'] }}</td>
+                    <td>{{ caso['fecha_creacion'] }}</td>
+                    <td>{{ caso['estado'] }}</td>
+                    <td>{{ caso['nombre_cliente'] }}</td>
+                    <td>{{ caso['nombre_area'] }}</td>
+                    <td>
+                        <form action="{{ url_for('listar_expedientes', id_caso=caso['id_caso']) }}" method="GET" style="display: inline;">
+                            <button id= ""class="button-details" type="submit" title="Detalles del Caso">
+                                <img src="{{ url_for('static', filename='image/detalle.png') }}" alt="Detalles" width="20" height="20" alig>
+                            </button>
+                        </form>
+                        <form action="{{ url_for('modificar_caso_route', id_caso=caso['id_caso']) }}" method="GET" style="display: inline;">
+                            <button class="button-edit" type="submit" title="Modificar Caso">
+                                <img src="{{ url_for('static', filename='image/modificar.png') }}" alt="Modificar" width="20" height="20" alig>
+                            </button>
+                        </form>
+                        <form action="{{ url_for('eliminar_caso_route', id_caso=caso['id_caso']) }}" method="GET" style="display: inline;">
+                            <button class="button-delete" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este caso?')" title="Eliminar caso">
+                                <img src="{{ url_for('static', filename='image/eliminar.png') }}" alt="Eliminar" width="20" height="20">
+                            </button>
+                        </form>
+                        <form action="{{ url_for('insertar_expediente', id_caso=caso['id_caso']) }}" method="GET" style="display: inline;">
+                            <button class="button-add_exp" type="submit" title="Agregar expediente">
+                                <img src="{{ url_for('static', filename='image/add.png') }}" alt="Agregar" width="20" height="20">
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        document.getElementById("btnRegistro_Caso").addEventListener("click",function(){
+            window.location.href="/agregar_caso";
+        });
+        document.getElementById("btnRegistro_Area").addEventListener("click",function(){
+            window.location.href="/registro_area";
+        });
+        document.getElementById("btnAreas").addEventListener("click",function(){
+            window.location.href="/areas";
+        });  
+    </script>
+</body>
+</html>
+{% endblock %}

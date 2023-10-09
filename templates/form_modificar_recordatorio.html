@@ -1,0 +1,30 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificar Recordatorio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modificar_recordatorio.css') }}">
+</head>
+<body>
+    <h1>Modificar Recordatorio</h1>
+    <form method="POST" action="/modificar_recordatorio/{{ recordatorio.id_notificacion }}">
+        <label for="nuevo_mensaje">Mensaje:</label>
+        <input type="text" id="nuevo_mensaje" name="nuevo_mensaje" value="{{ recordatorio.mensaje }}" required>
+        
+        <label for="nueva_fl">Fecha Limite:</label>
+        <input type="datetime-local" id="nueva_fl" name="nueva_fl" value="{{ recordatorio.fecha_limite }}" required>
+        
+        <label for="nueva_prioridad">Prioridad:</label>
+        <select id="nueva_prioridad" name="nueva_prioridad" required>
+            <option value="Alta" {% if recordatorio.prioridad == "Alta" %}selected{% endif %}>Alta</option>
+            <option value="Media" {% if recordatorio.prioridad == "Media" %}selected{% endif %}>Media</option>
+            <option value="Baja" {% if recordatorio.prioridad == "Baja" %}selected{% endif %}>Baja</option>
+        </select><br>
+        
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/clientes.css') }}">
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <button class="buttons" type="button" id="btnRegistro_Usuario">+</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>E-mail</th>
+                <th>Telefono</th>
+                <th>Direccion</th>
+                <th>Fecha de creacion</th>
+                <th>Acciones</th>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente[1] }}</td>
+                    <td>{{ cliente[2] }}</td>
+                    <td>{{ cliente[3] }}</td>
+                    <td>{{ cliente[4] }}</td>
+                    <td>{{ cliente[5] }}</td>
+                    <td>{{ cliente[6] }}</td>
+                    <td>
+                        <!-- Botón para modificar el cliente -->
+                        <a href="{{ url_for('modificar_cliente_route', id_cliente=cliente [0]) }}">Modificar</a>
+                        
+                        <!-- Botón para eliminar el cliente -->
+                        <a href="{{ url_for('eliminar_cliente_route', id_cliente=cliente [0]) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        document.getElementById("btnRegistro_Usuario").addEventListener("click",function(){
+            window.location.href="/registro_cliente";
+        })
+    </script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Expedientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/exps.css') }}">
+</head>
+<body>
+    <h1>Lista de Expedientes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Expediente</th>
+                <th>Correlativo</th>
+                <th>Descripcion</th>
+                <th>Fecha de creacion</th>
+                <th>Acciones</th>
+        </thead>
+        <tbody>
+            {% for expediente in expedientes %}
+                <tr>
+                    <td>{{ expediente['nombre_expediente'] }}</td>
+                    <td>{{ expediente['correlativo_expediente'] }}</td>
+                    <td>{{ expediente['descripcion'] }}</td>
+                    <td>{{ expediente['fecha_creacion'] }}</td>
+                    <td>
+                        <form action="{{ url_for('eliminar_expediente_route', id_expediente=expediente['id_expediente']) }}" method="GET" style="display: inline;">
+                            <button class="button-delete" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este expediente?')" title="Eliminar expediente">
+                                <img src="{{ url_for('static', filename='image/eliminar.png') }}" alt="Eliminar" width="20" height="20">
+                            </button>
+                        </form>
+                        <form action="{{ url_for('modificar_expediente_route', id_expediente=expediente['id_expediente']) }}" method="GET" style="display: inline;">
+                            <button class="button-edit" type="submit" title="Modificar Expediente">
+                                <img src="{{ url_for('static', filename='image/modificar.png') }}" alt="Modificar" width="20" height="20" alig>
+                            </button>
+                        </form>
+                        <form action="{{ url_for('mostrar_registro_noti', id_expediente=expediente['id_expediente']) }}" method="GET" style="display: inline;">
+                            <button class="button-edit" type="submit" title="Agregar recordatorio">
+                                <img src="{{ url_for('static', filename='image/recordatorio2.png') }}" alt="Recordatorio" width="20" height="20" alig>
+                            </button>
+                        </form>
+                        <form action="{{ url_for('mostrar_registro_tarea', id_expediente=expediente['id_expediente']) }}" method="GET" style="display: inline;">
+                            <button class="button-edit" type="submit" title="Agregar Tarea">
+                                <img src="{{ url_for('static', filename='image/tarea.png') }}" alt="Tarea" width="20" height="20" alig>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

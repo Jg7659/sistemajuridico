@@ -1,0 +1,32 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recordatorio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro_notificacion.css') }}">
+</head>
+<body>
+    <h1>Registrar Recordatorio</h1>
+    <form class="form-registro" method="POST" action="/registro_notificacion/{{ id_expediente }}">
+        <label for="mensaje">Mensaje:</label>
+        <input type="text" id="mensaje" name="mensaje" required><br>
+
+        <label for="fecha_limite">Fecha Limite:</label>
+        <input type="datetime-local" id="fecha_limite" name="fecha_limite" required><br>
+        
+        <label for="prioridad">Prioridad:</label>
+        <select id="prioridad" name="prioridad" required>
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+        </select><br>
+        
+
+        <input type="submit" value="Registrar">
+    </form>
+</body>
+</html>
+{% endblock %}

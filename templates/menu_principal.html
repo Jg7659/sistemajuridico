@@ -1,0 +1,112 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Principal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+</head>
+<body>
+    <div id="miTabla">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="8">Tareas</th>
+                </tr>
+                <tr>
+                    <th>Tarea</th>
+                    <th>Fecha Limite</th>
+                    <th>Prioridad</th>
+                    <th>Expediente</th>
+                    <th>Correlativo</th>
+                    <th>Caso</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas %}
+                    <tr>
+
+                        <td>{{ tarea['descripcion_tarea'] }}</td>
+                        <td>{{ tarea['fecha_limite'] }}</td>
+                        <td>{{ tarea['prioridad'] }}</td>
+                        <td>{{ tarea['nombre_expediente'] }}</td>
+                        <td>{{ tarea['correlativo_expediente'] }}</td>
+                        <td>{{ tarea['titulo'] }}</td>
+                        <td>{{ tarea['nombre'] }}</td>
+                        <td>{{ tarea['estado'] }}</td>
+                        <td>
+                            <form action="{{ url_for('cambiar_finalizado', id_tarea=tarea['id_tarea']) }}" method="POST" style="display: inline;">
+                                <button id= ""class="button-details" type="submit" title="Finalizado">
+                                    <img src="{{ url_for('static', filename='image/fin.png') }}" alt="Finalizado" width="20" height="20" alig>
+                                </button>
+                            </form>
+                            <form action="{{ url_for('cambiar_enproceso', id_tarea=tarea['id_tarea']) }}" method="POST" style="display: inline;">
+                                <button id= ""class="button-details" type="submit" title="En Curso">
+                                    <img src="{{ url_for('static', filename='image/proceso.png') }}" alt="En Curso" width="20" height="20" alig>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+    <div id="miTabla2">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="8">Recordatorios</th>
+                </tr>
+                <tr>
+                    <th>Recordatorio</th>
+                    <th>Fecha Limite</th>
+                    <th>Prioridad</th>
+                    <th>Expediente</th>
+                    <th>Correlativo</th>
+                    <th>Caso</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in recordatorios %}
+                    <tr>
+   
+                        <td>{{ record['mensaje'] }}</td>
+                        <td>{{ record['fecha_limite'] }}</td>
+                        <td>{{ record['prioridad'] }}</td>
+                        <td>{{ record['nombre_expediente'] }}</td>
+                        <td>{{ record['correlativo_expediente'] }}</td>
+                        <td>{{ record['titulo'] }}</td>
+                        <td>{{ record['nombre'] }}</td>
+                        <td>{{ record['estado'] }}</td>
+                        <td>
+                            <form action="{{ url_for('cambiar_finalizado_record', id_notificacion=record['id_notificacion']) }}" method="POST" style="display: inline;">
+                                <button id= ""class="button-details" type="submit" title="Finalizado">
+                                    <img src="{{ url_for('static', filename='image/fin.png') }}" alt="Finalizado" width="20" height="20" alig>
+                                </button>
+                            </form>
+                            <form action="{{ url_for('cambiar_pospuesto_record', id_notificacion=record['id_notificacion']) }}" method="POST" style="display: inline;">
+                                <button id= ""class="button-details" type="submit" title="Pospuesto">
+                                    <img src="{{ url_for('static', filename='image/posponer.png') }}" alt="Pospuesto" width="20" height="20" alig>
+                                </button>
+                            </form>
+                            <form action="{{ url_for('cambiar_cancelado_record', id_notificacion=record['id_notificacion']) }}" method="POST" style="display: inline;">
+                                <button id= ""class="button-details" type="submit" title="Cancelado">
+                                    <img src="{{ url_for('static', filename='image/cancelado.png') }}" alt="Cancelado" width="20" height="20" alig>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

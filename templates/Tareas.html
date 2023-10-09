@@ -1,0 +1,58 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tareas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tareas.css') }}">
+</head>
+<body>
+    <h1>Tareas</h1>
+    <div id="miTabla">
+        <table>
+            <thead>
+                <tr>
+                    
+                    <th>Tarea</th>
+                    <th>Fecha Limite</th>
+                    <th>Prioridad</th>
+                    <th>Expediente</th>
+                    <th>Correlativo</th>
+                    <th>Caso</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas2 %}
+                    <tr>
+                        <td>{{ tarea['descripcion_tarea'] }}</td>
+                        <td>{{ tarea['fecha_limite'] }}</td>
+                        <td>{{ tarea['prioridad'] }}</td>
+                        <td>{{ tarea['nombre_expediente'] }}</td>
+                        <td>{{ tarea['correlativo_expediente'] }}</td>
+                        <td>{{ tarea['titulo'] }}</td>
+                        <td>{{ tarea['nombre'] }}</td>
+                        <td>{{ tarea['estado'] }}</td>
+                        <td> 
+                            <form action="{{ url_for('modificar_tarea_route', id_tarea=tarea['id_tarea']) }}" method="GET" style="display: inline;">
+                                <button class="button-edit" type="submit" title="Modificar Tarea">
+                                    <img src="{{ url_for('static', filename='image/modificar.png') }}" alt="Modificar" width="20" height="20" alig>
+                                </button>
+                            </form>
+                            <form action="{{ url_for('eliminar_tarea_route', id_tarea=tarea['id_tarea']) }}" method="GET" style="display: inline;">
+                                <button class="button-delete" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarea?')" title="Eliminar tarea">
+                                    <img src="{{ url_for('static', filename='image/eliminar.png') }}" alt="Eliminar" width="20" height="20">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de la Búsqueda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/busqueda.css') }}">
+</head>
+<body>
+    <h1>Resultados de la Búsqueda</h1>
+    <form action="/consulta_clientes" method="POST">
+        <label for="busqueda">Buscar por nombre o tipo de cliente:</label>
+        <input type="text" id="busqueda" name="busqueda" placeholder="Nombre o Tipo">
+        <br>
+    
+        <input type="submit" value="Buscar">
+    
+    </form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarea</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro_tarea.css') }}">
+</head>
+<body>
+    <h1>Registrar Tarea</h1>
+    <form class="form-registro" method="POST" action="/registro_tarea/{{ id_expediente }}">
+        <label for="descripcion_tarea">Descripcion:</label>
+        <input type="text" id="descripcion_tarea" name="descripcion_tarea" required><br>
+
+        <label for="fecha_creacion">Fecha Inicio</label>
+        <input type="date" id="fecha_creacion" name="fecha_creacion" required><br>
+
+        <label for="fecha_limite">Fecha Limite:</label>
+        <input type="date" id="fecha_limite" name="fecha_limite" required><br>
+        
+        <label for="prioridad">Prioridad:</label>
+        <select id="prioridad" name="prioridad" required>
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+        </select><br>
+        
+
+        <input type="submit" value="Registrar">
+    </form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificar Caso</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modificar_caso.css') }}">
+</head>
+<body>
+    <h1>Modificar Caso</h1>
+    <form method="POST" action="/modificar_caso/{{ caso.id_caso }}">
+        <label for="nuevo_titulo">Nuevo Titulo:</label>
+        <input type="text" id="nuevo_titulo" name="nuevo_titulo" value="{{ caso.titulo }}" required>
+
+        <label for="nueva_descripcion">Nueva Descripcion:</label>
+        <input type="text" id="nueva_descripcion" name="nueva_descripcion" value="{{ caso.descripcion }}" required>
+
+        <label for="nuevo_estado">Nuevo Estado:</label>
+        <select id="nuevo_estado" name="nuevo_estado" required>
+            <option value="Activo" {% if caso.estado == "Activo" %}selected{% endif %}>Activo</option>
+            <option value="Fenecido" {% if caso.estado == "Fenecido" %}selected{% endif %}>Fenecido</option>
+            <option value="Pendiente" {% if caso.estado == "Pendiente" %}selected{% endif %}>Pendiente</option>
+        </select><br>  
+
+        <label for="nuevo_id_cliente">Nuevo Cliente:</label>
+        <select name="nuevo_id_cliente" required>
+            {% for id_cliente, nombre_cliente in nombres_cliente %}
+            <option value="{{ id_cliente }}" {% if id_cliente == caso.id_cliente_asociado %}selected{% endif %}>{{ nombre_cliente }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="nuevo_id_area">Nueva Área:</label>
+        <select name="nuevo_id_area" required>
+            {% for id_area, nombre_area in nombres_area %}
+            <option value="{{ id_area }}" {% if id_area == caso.id_area_caso %}selected{% endif %}>{{ nombre_area }}</option>
+            {% endfor %}
+        </select>
+
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
+{% endblock %}

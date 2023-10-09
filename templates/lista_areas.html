@@ -1,0 +1,43 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Areas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/casos.css') }}">
+</head>
+<body>
+    <h1>Lista de Areas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Area Legal</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for area in areas %}
+                <tr>
+                    <td>{{ area['nombre'] }}</td>
+                    <td>{{ area['descripcion'] }}</td>
+                    <td>
+                        <form action="{{ url_for('modificar_area_route', id_area=area['id_area']) }}" method="GET" style="display: inline;">
+                            <button class="button-edit" type="submit" title="Modificar Area">
+                                <img src="{{ url_for('static', filename='image/modificar.png') }}" alt="Modificar" width="20" height="20" alig>
+                            </button>
+                        </form>
+                        <form action="{{ url_for('eliminar_area_route', id_area=area['id_area']) }}" method="GET" style="display: inline;">
+                            <button class="button-delete" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta area?')" title="Eliminar area">
+                                <img src="{{ url_for('static', filename='image/eliminar.png') }}" alt="Eliminar" width="20" height="20">
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

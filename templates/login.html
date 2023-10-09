@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Iniciar Sesion</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <h1>Bienvenid@</h1>
+        <form class="form-login" action="/login" method="POST">
+            
+            <h5>Iniciar Sesion</h5>
+            <input class="controls" type="text" name="email" value="" placeholder="E-mail" required>
+            <input class="controls" type="password" name="contraseña" value="" placeholder="Contraseña" required>
+            <button class="buttons" type="submit">Ingresar</button>
+            <button class="buttons" type="button" id="btnRegistro">Registrarse</button>
+            
+        </form>
+        <script>
+            document.getElementById("btnRegistro").addEventListener("click",function(){
+                window.location.href="/registro";
+            })
+        </script>
+    </body>
+</html>

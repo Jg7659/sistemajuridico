@@ -1,0 +1,33 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificar Tarea</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modificar_tarea.css') }}">
+</head>
+<body>
+    <h1>Modificar Tarea</h1>
+    <form method="POST" action="/modificar_tarea/{{ tarea.id_tarea }}">
+        <label for="nueva_descripcion">Descripcion:</label>
+        <input type="text" id="nueva_descripcion" name="nueva_descripcion" value="{{ tarea.descripcion_tarea }}" required>
+        
+        <label for="nueva_fc">Fecha de Creacion:</label>
+        <input type="date" id="nueva_fc" name="nueva_fc" value="{{ tarea.fecha_creacion }}" required>
+
+        <label for="nueva_fl">Fecha Limite:</label>
+        <input type="date" id="nueva_fl" name="nueva_fl" value="{{ tarea.fecha_limite }}" required>
+        
+        <label for="nueva_prioridad">Prioridad:</label>
+        <select id="nueva_prioridad" name="nueva_prioridad" required>
+            <option value="Alta" {% if tarea.prioridad == "Alta" %}selected{% endif %}>Alta</option>
+            <option value="Media" {% if tarea.prioridad == "Media" %}selected{% endif %}>Media</option>
+            <option value="Baja" {% if tarea.prioridad == "Baja" %}selected{% endif %}>Baja</option>
+        </select><br>
+        
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
+{% endblock %}

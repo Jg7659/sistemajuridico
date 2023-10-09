@@ -1,0 +1,29 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Expedientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/agregar_exp.css') }}">
+</head>
+<body>
+    <h1>Registrar Expediente</h1>
+
+    <form method="POST" action="/agregar_expediente/{{ id_caso }}">
+        <label for="nombre_expediente">Nombre Expediente:</label>
+        <input type="text" id="nombre_expediente" name="nombre_expediente" required><br>
+
+        <label for="correlativo_expediente">Correlativo:</label>
+        <input type="text" id="correlativo_expediente" name="correlativo_expediente"><br>
+
+        <label for="descripcion">Descripcion:</label>
+        <input type="text" id="descripcion" name="descripcion" required><br>
+
+        <button type="submit">Agregar Expediente</button>
+    </form>
+
+</body>
+</html>
+{% endblock %}

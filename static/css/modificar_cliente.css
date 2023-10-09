@@ -1,0 +1,41 @@
+main {
+    margin-top: 90px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+form {
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    padding: 20px; /* Espacio alrededor del formulario */
+    background-color: #f4f4f4; /* Fondo gris claro */
+    border: 1px solid #ddd; /* Borde del formulario */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+label {
+    display: block; /* Mostrar etiquetas en una línea separada */
+    margin-bottom: 10px; /* Espacio entre etiquetas */
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%; /* Ancho completo para campos de texto y correo */
+    padding: 10px; /* Espacio interno */
+    margin-bottom: 15px; /* Espacio inferior entre campos */
+    border: 1px solid #ccc; /* Borde del campo */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+button[type="submit"] {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    padding: 10px 20px; /* Espacio interno del botón */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambio de cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+}

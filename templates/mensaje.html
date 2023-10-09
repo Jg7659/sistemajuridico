@@ -1,0 +1,15 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mensaje</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mensaje.css') }}">
+</head>
+<body>
+    <h1>Mensaje</h1>
+    <p>{{ mensaje }}</p>
+</body>
+</html>
+{% endblock %}

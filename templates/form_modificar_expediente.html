@@ -1,0 +1,26 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificar Expediente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modificar_cliente.css') }}">
+</head>
+<body>
+    <h1>Modificar Expediente</h1>
+    <form method="POST" action="/modificar_expediente/{{ expediente.id_expediente }}">
+        <label for="nuevo_nombre">Nuevo Nombre:</label>
+        <input type="text" id="nuevo_nombre" name="nuevo_nombre" value="{{ expediente.nombre_expediente }}" required>
+        
+        <label for="nuevo_corre_expediente">Nuevo Correlativo:</label>
+        <input type="text" id="nuevo_corre_expediente" name="nuevo_corre_expediente" value="{{ expediente.correlativo_expediente }}">
+        
+        <label for="nueva_descripcion">Nueva Descripcion:</label>
+        <input type="text" id="nueva_descripcion" name="nueva_descripcion" value="{{ expediente.descripcion }}" required>
+        
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
+{% endblock %}

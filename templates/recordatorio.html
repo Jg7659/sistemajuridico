@@ -1,0 +1,61 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recordatorios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recordatorio.css') }}">
+</head>
+<body>
+    <h1>Recordatorios</h1>
+    <div id="miTabla2">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="8">Recordatorios</th>
+                </tr>
+                <tr>
+                    <th>Recordatorio</th>
+                    <th>Fecha Limite</th>
+                    <th>Prioridad</th>
+                    <th>Expediente</th>
+                    <th>Correlativo</th>
+                    <th>Caso</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in record2 %}
+                    <tr>
+   
+                        <td>{{ record['mensaje'] }}</td>
+                        <td>{{ record['fecha_limite'] }}</td>
+                        <td>{{ record['prioridad'] }}</td>
+                        <td>{{ record['nombre_expediente'] }}</td>
+                        <td>{{ record['correlativo_expediente'] }}</td>
+                        <td>{{ record['titulo'] }}</td>
+                        <td>{{ record['nombre'] }}</td>
+                        <td>{{ record['estado'] }}</td>
+                        <td> 
+                            <form action="{{ url_for('modificar_record_route', id_notificacion=record['id_notificacion']) }}" method="GET" style="display: inline;">
+                                <button class="button-edit" type="submit" title="Modificar Recordatorio">
+                                    <img src="{{ url_for('static', filename='image/modificar.png') }}" alt="Modificar" width="20" height="20" alig>
+                                </button>
+                            </form>
+                            <form action="{{ url_for('eliminar_record_route', id_notificacion=record['id_notificacion']) }}" method="GET" style="display: inline;">
+                                <button class="button-delete" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este recordatorio?')" title="Eliminar Recordatorio">
+                                    <img src="{{ url_for('static', filename='image/eliminar.png') }}" alt="Eliminar" width="20" height="20">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

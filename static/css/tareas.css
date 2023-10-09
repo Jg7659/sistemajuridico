@@ -1,0 +1,65 @@
+/* Estilo para el encabezado h1 */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para las celdas de la tabla */
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+/* Estilo para la fila de encabezado de la tabla */
+thead {
+    background-color: #f2f2f2;
+}
+
+/* Estilo para las celdas de encabezado de la tabla */
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+/* Estilo para las filas impares de la tabla */
+tbody tr:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+/* Estilo para los botones de acciones */
+.button-edit, .button-delete {
+    background-color: #27ae60;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.button-delete {
+    background-color: #e74c3c;
+}
+
+/* Estilo para las imágenes dentro de los botones */
+.button-edit img, .button-delete img {
+    vertical-align: middle;
+    margin-right: 5px;
+}

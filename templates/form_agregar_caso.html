@@ -1,0 +1,48 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de casos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/agregar_caso.css') }}">
+</head>
+<body>
+    <h1>Registrar Caso</h1>
+
+    <form method="POST">
+        <label for="titulo">Titulo:</label>
+        <input type="text" id="titulo" name="titulo" required><br>
+
+        <label for="descripcion">Descripcion:</label>
+        <input type="text" id="descripcion" name="descripcion" required><br>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="Activo">Activo</option>
+            <option value="Fenecido">Fenecido</option>
+            <option value="Pendiente">Pendiente</option>
+        </select><br>
+
+        <label for="id_cliente">Nombre del Cliente:</label>
+        <select name="id_cliente" required>
+            {% for id_cliente, nombre_cliente in nombres_cliente %}
+            <option value="{{ id_cliente }}">{{ nombre_cliente }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="id_area">Area Legal:</label>
+        <select name="id_area" required>
+            {% for id_area, nombre_area in nombres_area %}
+            <option value="{{ id_area }}">{{ nombre_area }}</option>
+            {% endfor %}
+        </select>
+        <!-- Otros campos del formulario (descripción, etc.) -->
+
+        <button type="submit">Agregar Caso</button>
+    </form>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificar Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modificar_cliente.css') }}">
+</head>
+<body>
+    <h1>Modificar Cliente</h1>
+    <form method="POST" action="/modificar_cliente/{{ cliente.id_cliente }}">
+        <label for="nuevo_nombre">Nuevo Nombre:</label>
+        <input type="text" id="nuevo_nombre" name="nuevo_nombre" value="{{ cliente.nombre }}" required>
+        
+        <label for="nuevo_tipo">Nuevo Tipo:</label>
+        <input type="text" id="nuevo_tipo" name="nuevo_tipo" value="{{ cliente.tipo }}">
+        
+        <label for="nuevo_email">Nuevo Email:</label>
+        <input type="email" id="nuevo_email" name="nuevo_email" value="{{ cliente.email }}">
+        
+        <label for="nuevo_telefono">Nuevo Teléfono:</label>
+        <input type="text" id="nuevo_telefono" name="nuevo_telefono" value="{{ cliente.telefono }}" >
+        
+        <label for="nueva_direccion">Nueva Dirección:</label>
+        <input type="text" id="nueva_direccion" name="nueva_direccion" value="{{ cliente.direccion }}" required>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
+{% endblock %}

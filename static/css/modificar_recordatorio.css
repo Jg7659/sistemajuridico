@@ -1,0 +1,61 @@
+main {
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select {
+    appearance: none;
+    background-color: #fff;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: flex-end;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#nuevo_mensaje {
+    /* Agrega un estilo para dar más espacio vertical al campo de mensaje */
+    height: 100px; /* Ajusta la altura como desees */
+}

@@ -1,0 +1,23 @@
+{% extends '/menu.html' %}
+{% block title %}Página de Inicio{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificar Area</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modificar_cliente.css') }}">
+</head>
+<body>
+    <h1>Modificar Area</h1>
+    <form method="POST" action="/modificar_area/{{ area.id_area }}">
+        <label for="nuevo_nombre">Nombre:</label>
+        <input type="text" id="nuevo_nombre" name="nuevo_nombre" value="{{ area.nombre }}" required>
+        
+        <label for="nueva_descripcion">Descripcion:</label>
+        <input type="text" id="nueva_descripcion" name="nueva_descripcion" value="{{ area.descripcion }}" required>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
+{% endblock %}
