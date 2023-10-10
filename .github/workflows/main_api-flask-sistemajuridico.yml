@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'api-flask-sistemajuridico'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B0804A7B7C5F4CF0BD93AD82CA056F47 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6086E899412542238F4A4394AE6B449E }}
