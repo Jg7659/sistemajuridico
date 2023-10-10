@@ -3,9 +3,9 @@ import mysql.connector
 def conectar_db():
     try:
         conn = mysql.connector.connect(
-            host='localhost',
-            user='root',
-            password='Josh7659.',
+            host='sistemajuridico.mysql.database.azure.com',
+            user='joshua7659',
+            password='rogasa7659.',
             database='sistema_juridico'
         )
         if conn.is_connected():
